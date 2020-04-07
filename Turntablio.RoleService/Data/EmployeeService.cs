@@ -3,24 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-
+using Turntablio.RoleService.Data.Model;
 
 namespace Turntablio.RoleService.Data
 {
     public class EmployeeService
     {
         private readonly IHttpClientFactory _clientFactory;
-        public EmployeeService(IHttpClientFactory clientFactory)
+        private readonly EmployeeContext _context;
+        public EmployeeService(EmployeeContext context)
         {
-            _clientFactory = clientFactory;
+            _context = context;
         }
 
-        public async Task<Employee[]> GetEmplyeeAsync()
+        //public EmployeeService(IHttpClientFactory clientFactory)
+        //{
+        //    _clientFactory = clientFactory;
+        //}
+
+
+        public async Task<EmployeeModel[]> GetEmplyeeAsync()
         {
             var request = new HttpRequestMessage(HttpMethod.Get,
            "https://role-api.herokuapp.com/api/employees");
-            //request.Headers.Add("Accept", "application/vnd.github.v3+json");
-            //request.Headers.Add("User-Agent", "HttpClientFactory-Sample");
 
             var client = _clientFactory.CreateClient();
             var response = await client.SendAsync(request);
@@ -28,5 +33,17 @@ namespace Turntablio.RoleService.Data
             return null;
 
         }
+
+        //public async Task<EmployeeModel[]> GetEmplyeeAsync()
+        //{
+        //    var request = new HttpRequestMessage(HttpMethod.Get,
+        //   "https://role-api.herokuapp.com/api/employees");
+
+        //    var client = _clientFactory.CreateClient();
+        //    var response = await client.SendAsync(request);
+
+        //    return null;
+
+        //}
     }
 }

@@ -1,0 +1,42 @@
+﻿@page "/employee/create"
+
+@using Turntablio.RoleService.Data
+
+<h3>EmployeeForm</h3>
+
+<EditForm Model="employee" OnValidSubmit="OnValidSubmit">
+    <DataAnnotationsValidator />
+
+    <div class="form-group">
+        <label>First Name</label>
+        <div>
+            <InputText class="form-control" @bind-Value="@employee.FirstName" />
+            <ValidationMessage For="@(() => employee.FirstName)" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Last Name</label>
+        <div>
+            <InputText class="form-control" @bind-Value="@employee.LastName" />
+            <ValidationMessage For="@(() => employee.LastName)" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Email</label>
+        <div>
+            <InputText class="form-control" @bind-Value="@employee.Email" />
+            <ValidationMessage For="@(() => employee.Email)" />
+        </div>
+    </div>
+
+    <button class="btn btn-success" type="submit">Save</button>
+
+</EditForm>
+
+@code {
+    [Parameter] public EmployeeModel employee { get; set; }
+    [Parameter] public EventCallback OnValidSubmit { get; set; }
+}
+
