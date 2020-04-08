@@ -6,9 +6,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Turntablio.RoleService.Data.Model
 {
-    public class EmployeeContext: DbContext
+    public class EmployeeContext : DbContext
     {
         public EmployeeContext(DbContextOptions<EmployeeContext> options) : base(options) { }
-        public DbSet<Employee> employees { get; set; }
+        public DbSet<Role> Roles { get; set; }
+        public DbSet<Employee> Employees { get; set; }
+
     }
 }
