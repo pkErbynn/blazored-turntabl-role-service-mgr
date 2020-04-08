@@ -9,14 +9,12 @@ namespace Turntablio.RoleService.Data.Model
 {
     public class Employee
     {
-        [Key]
         public int EmployeeId { get; set; }
         public string EmployeeFirstName { get; set; }
         public string EmployeeLastName { get; set; }
         public string EmployeeEmail { get; set; }
         public string EmployeeAddress { get; set; }
 
-        public int RoleId { get; set; }
         public ICollection<Role> Roles { get; set; }
 
     }

@@ -5,11 +5,13 @@ using System.Threading.Tasks;
 
 namespace Turntablio.RoleService.Data.Model
 {
-    public class Role
+    public class EmployeeRole
     {
+        public int EmployeeId { get; set; }
+        public Employee Employee { get; set; }
+
         public int RoleId { get; set; }
-        public string RoleName { get; set; }
-        public ICollection<Employee> Employees { get; set; }
+        public Role Role { get; set; }
 
     }
 }
