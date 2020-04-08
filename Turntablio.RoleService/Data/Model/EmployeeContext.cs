@@ -13,6 +13,7 @@ namespace Turntablio.RoleService.Data.Model
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<EmployeeRole>().HasKey(er => new { er.EmployeeId, er.RoleId });
+
         }
 
         public DbSet<Role> Roles { get; set; }
