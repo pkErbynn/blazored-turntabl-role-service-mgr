@@ -17,7 +17,7 @@ namespace Turntablio.RoleService.Data.Model
         public string EmployeeAddress { get; set; }
 
         public int RoleId { get; set; }
-        public Role Role { get; set; }
+        public ICollection<Role> Roles { get; set; }
 
     }
 }
