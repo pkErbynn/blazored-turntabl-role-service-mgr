@@ -20,5 +20,6 @@ namespace Turntablio.RoleService.Data.Model
         public DbSet<Role> Roles { get; set; }
         public DbSet<EmployeeRole> EmployeeRoles { get; set; }
 
+      
     }
 }
