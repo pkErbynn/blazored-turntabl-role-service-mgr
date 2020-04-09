@@ -26,20 +26,54 @@ namespace Turntablio.RoleService.Migrations
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<string>("EmployeeAddress")
-                        .HasColumnType("text");
+                        .IsRequired()
+                        .HasColumnType("character varying(255)")
+                        .HasMaxLength(255);
 
                     b.Property<string>("EmployeeEmail")
-                        .HasColumnType("text");
+                        .IsRequired()
+                        .HasColumnType("character varying(60)")
+                        .HasMaxLength(60);
 
                     b.Property<string>("EmployeeFirstName")
-                        .HasColumnType("text");
+                        .IsRequired()
+                        .HasColumnType("character varying(50)")
+                        .HasMaxLength(50);
 
                     b.Property<string>("EmployeeLastName")
-                        .HasColumnType("text");
+                        .IsRequired()
+                        .HasColumnType("character varying(50)")
+                        .HasMaxLength(50);
 
                     b.HasKey("EmployeeId");
 
                     b.ToTable("Employees");
+
+                    b.HasData(
+                        new
+                        {
+                            EmployeeId = 1,
+                            EmployeeAddress = "Norway, Taifa, Accra, Ghana",
+                            EmployeeEmail = "john.erbynn@turntabl.io",
+                            EmployeeFirstName = "John",
+                            EmployeeLastName = "Erbynn"
+                        },
+                        new
+                        {
+                            EmployeeId = 2,
+                            EmployeeAddress = "Tantra, Accra, Ghana",
+                            EmployeeEmail = "alex.owusu@turntabl.io",
+                            EmployeeFirstName = "Alex",
+                            EmployeeLastName = "Owusu"
+                        },
+                        new
+                        {
+                            EmployeeId = 3,
+                            EmployeeAddress = "Madina, Accra, Ghana",
+                            EmployeeEmail = "idawud@turntabl.io",
+                            EmployeeFirstName = "Dawud",
+                            EmployeeLastName = "Ismail"
+                        });
                 });
 
             modelBuilder.Entity("Turntablio.RoleService.Data.Model.EmployeeRole", b =>
@@ -55,6 +89,23 @@ namespace Turntablio.RoleService.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("EmployeeRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            EmployeeId = 1,
+                            RoleId = 1
+                        },
+                        new
+                        {
+                            EmployeeId = 2,
+                            RoleId = 1
+                        },
+                        new
+                        {
+                            EmployeeId = 3,
+                            RoleId = 2
+                        });
                 });
 
             modelBuilder.Entity("Turntablio.RoleService.Data.Model.Role", b =>
@@ -65,11 +116,30 @@ namespace Turntablio.RoleService.Migrations
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<string>("RoleName")
-                        .HasColumnType("text");
+                        .IsRequired()
+                        .HasColumnType("character varying(50)")
+                        .HasMaxLength(50);
 
                     b.HasKey("RoleId");
 
                     b.ToTable("Roles");
+
+                    b.HasData(
+                        new
+                        {
+                            RoleId = 1,
+                            RoleName = "Developer"
+                        },
+                        new
+                        {
+                            RoleId = 2,
+                            RoleName = "Project Manager"
+                        },
+                        new
+                        {
+                            RoleId = 3,
+                            RoleName = "Admin"
+                        });
                 });
 
             modelBuilder.Entity("Turntablio.RoleService.Data.Model.EmployeeRole", b =>
