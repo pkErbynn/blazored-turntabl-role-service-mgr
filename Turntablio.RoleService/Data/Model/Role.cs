@@ -9,7 +9,7 @@ namespace Turntablio.RoleService.Data.Model
     {
         public int RoleId { get; set; }
         public string RoleName { get; set; }
-        public ICollection<Employee> Employees { get; set; }
+        public ICollection<EmployeeRole> EmployeeRoles { get; set; }
 
     }
 }
