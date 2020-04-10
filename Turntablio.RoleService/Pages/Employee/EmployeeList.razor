@@ -1,7 +1,7 @@
 ﻿@page "/employees"
 
 @using Turntablio.RoleService.Data
-@*@inject EmployeeService EmployeeService;*@
+@*@inject EmployeeService EmployeeService
 @inject HttpClient Http
 
 
@@ -9,7 +9,8 @@
 <hr />
 
 <a class="btn btn-success" href="/employee/new">New Employee</a>
-<br /><br />
+<br />
+<br />
 
 @if (Emps == null)
 {
@@ -51,27 +52,10 @@ else
 
 @code {
 
-    bool isEmployeeDataLoadFinish = false;
+       [Parameter] public EmployeeViewModel employee { get; set; }
 
-    List<Emp> Emps = new List<Emp>();
 
-    protected override async Task OnInitializedAsync()
-    {
-        //Emps = await Http.GetJsonAsync<List<Emp>>("https://role-api.herokuapp.com/api/employees");
-                
-        Emps = await Http.GetJsonAsync<List<Emp>>("https://role-api.herokuapp.com/api/employees");
-        isEmployeeDataLoadFinish = true;
-    }
-
-    public class Emp
-    {
-        public int employeeid { get; set; }
-        public string employeefname { get; set; }
-        public string employeelname { get; set; }
-        public string employeeemail { get; set; }
-        public string employeeaddress { get; set; }
-        public string employeerole { get; set; }
-    }
 
 }
+*@
 
