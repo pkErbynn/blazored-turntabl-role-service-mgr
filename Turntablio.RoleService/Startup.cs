@@ -12,7 +12,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Turntablio.RoleService.Data;
+using Turntablio.RoleService.Data.IServices;
 using Turntablio.RoleService.Data.Model;
+using Turntablio.RoleService.Data.Services;
 
 namespace Turntablio.RoleService
 {
@@ -36,7 +38,9 @@ namespace Turntablio.RoleService
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
+            services.AddTransient<IEmployeeService, EmployeeService>();
             services.AddTransient<System.Net.Http.HttpClient>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

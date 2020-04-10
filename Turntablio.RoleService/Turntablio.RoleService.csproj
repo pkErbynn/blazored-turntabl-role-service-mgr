@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data\Service\" />
+    <Folder Include="Pages\ViewModel\" />
   </ItemGroup>
 
 </Project>
