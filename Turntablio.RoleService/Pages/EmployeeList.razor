@@ -6,9 +6,9 @@
 
 
 <h1>Employee List</h1>
+<hr />
 
-<p>This is the list of employees added.</p>
-<button class="btn btn-success">Get Employees</button>
+<a class="btn btn-success" href="/employee/new">New Employee</a>
 <br /><br />
 
 @if (Emps == null)
@@ -36,13 +36,13 @@ else
         <tbody>
             @foreach (var emp in Emps)
             {
-            <tr>
-                <td>@emp.employeefname.</td>
-                <td>@emp.employeelname</td>
-                <td>@emp.employeeemail</td>
-                <td>@emp.employeeaddress</td>
-                <td>@emp.employeerole</td>
-            </tr>
+                <tr>
+                    <td>@emp.employeefname.</td>
+                    <td>@emp.employeelname</td>
+                    <td>@emp.employeeemail</td>
+                    <td>@emp.employeeaddress</td>
+                    <td>@emp.employeerole</td>
+                </tr>
             }
         </tbody>
     </table>
@@ -50,12 +50,15 @@ else
 
 
 @code {
+
     bool isEmployeeDataLoadFinish = false;
 
-    List<Emp> Emps = new List<Emp>( );
+    List<Emp> Emps = new List<Emp>();
 
     protected override async Task OnInitializedAsync()
     {
+        //Emps = await Http.GetJsonAsync<List<Emp>>("https://role-api.herokuapp.com/api/employees");
+                
         Emps = await Http.GetJsonAsync<List<Emp>>("https://role-api.herokuapp.com/api/employees");
         isEmployeeDataLoadFinish = true;
     }

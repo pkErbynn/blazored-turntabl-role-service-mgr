@@ -6,10 +6,15 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Turntablio.RoleService.Data;
+using Turntablio.RoleService.Data.IServices;
+using Turntablio.RoleService.Data.Model;
+using Turntablio.RoleService.Data.Services;
 
 namespace Turntablio.RoleService
 {
@@ -26,14 +31,16 @@ namespace Turntablio.RoleService
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<EmployeeContext>(options =>
+                           options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddMvc();
             services.AddHttpClient();
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
-            services.AddTransient<EmployeeService>();
+
+            services.AddTransient<IEmployeeService, EmployeeService>();
             services.AddTransient<System.Net.Http.HttpClient>();
-
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
