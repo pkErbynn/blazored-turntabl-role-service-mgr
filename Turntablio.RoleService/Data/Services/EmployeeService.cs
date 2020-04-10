@@ -21,6 +21,7 @@ namespace Turntablio.RoleService.Data.Services
         {
             var employees = _dbContext.Employees.ToList();
 
+
             return employees;
         }
 
