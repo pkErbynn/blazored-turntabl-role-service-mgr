@@ -8,7 +8,7 @@ namespace Turntablio.RoleService.Data.IServices
 {
     interface IEmployeeService
     {
-        public List<Employee> GetEmployees();
+        public IEnumerable<Employee> GetEmployees();
         public Employee GetEmployee(int id);
         public string AddEmployee(Employee employee);
         public string UpdateEmployee(Employee employee);
