@@ -8,7 +8,7 @@ using Turntablio.RoleService.Data.Model;
 
 namespace Turntablio.RoleService.Data.Services
 {
-    public class EmployeeService : IEmployeeService
+    public class EmployeeService
     {
         private readonly EmployeeContext _dbContext;
 
@@ -20,7 +20,10 @@ namespace Turntablio.RoleService.Data.Services
         // Get All Employees
         public IEnumerable<Employee> GetEmployees()
         {
-            return _dbContext.Employees.ToList();
+            var emplyees = _dbContext.Employees.ToList();
+            Console.WriteLine("works...");
+            Console.WriteLine(emplyees);
+            return emplyees;
         }
         
         // Get Employee By Id

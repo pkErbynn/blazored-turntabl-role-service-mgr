@@ -1,25 +1,17 @@
 ﻿@page "/employees"
 
 @using Turntablio.RoleService.Data
-@*@inject EmployeeService EmployeeService
-@inject HttpClient Http
+@inject Turntablio.RoleService.Data.Services.EmployeeService  employeeService
 
-
-<h1>Employee List</h1>
+<NavLink class="nav-link" href="AddEmployee">
+    <span class="oi oi-plus" aria-hidden="true"></span> Add New
+</NavLink>
+<h1>Employee Information</h1>
 <hr />
 
-<a class="btn btn-success" href="/employee/new">New Employee</a>
-<br />
-<br />
-
-@if (Emps == null)
-{
-    <p><em>No employees available yet</em></p>
-}
-@if (!isEmployeeDataLoadFinish)
+@if (employees == null)
 {
     <h4><em>Loading...</em></h4>
-    <br />
 }
 else
 {
@@ -31,19 +23,18 @@ else
                 <th>Email</th>
                 <th>Address</th>
                 <th>Role</th>
-
             </tr>
         </thead>
         <tbody>
-            @foreach (var emp in Emps)
+            @foreach (var employee in employees)
             {
-                <tr>
-                    <td>@emp.employeefname.</td>
-                    <td>@emp.employeelname</td>
-                    <td>@emp.employeeemail</td>
-                    <td>@emp.employeeaddress</td>
-                    <td>@emp.employeerole</td>
-                </tr>
+                Console.WriteLine(employee);
+                @*<tr>
+                    <td>@employee.EmployeeFirstName</td>
+                    <td>@employee.EmployeeLastName</td>
+                    <td>@employee.EmployeeEmail</td>
+                    <td>@employee.EmployeeAddress</td>
+                </tr>*@
             }
         </tbody>
     </table>
@@ -52,10 +43,61 @@ else
 
 @code {
 
-       [Parameter] public EmployeeViewModel employee { get; set; }
+    [Parameter] public EmployeeViewModel viewModel { get; set; }
 
-
+    IEnumerable<Employee> employees;
+    protected override async Task OnInitializedAsync()
+    {
+        employees = await Task.Run(() => employeeService.GetEmployees());
+    }
 
 }
+@*
+
+    @if (Emps == null)
+    {
+        <p><em>No employees available yet</em></p>
+    }
+    @if (!isEmployeeDataLoadFinish)
+    {
+        <h4><em>Loading...</em></h4>
+        <br />
+    }
+    else
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Address</th>
+                    <th>Role</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var emp in Emps)
+                {
+                    <tr>
+                        <td>@emp.employeefname.</td>
+                        <td>@emp.employeelname</td>
+                        <td>@emp.employeeemail</td>
+                        <td>@emp.employeeaddress</td>
+                        <td>@emp.employeerole</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+
+    @code {
+
+           [Parameter] public EmployeeViewModel employee { get; set; }
+
+
+
+    }
 *@
 

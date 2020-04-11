@@ -39,7 +39,7 @@ namespace Turntablio.RoleService
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
 
-            services.AddTransient<IEmployeeService, EmployeeService>();
+            services.AddTransient<EmployeeService>();
             services.AddTransient<System.Net.Http.HttpClient>();
         }
 
