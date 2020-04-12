@@ -34,11 +34,15 @@ else
                 <td>@employee.EmployeeLastName</td>
                 <td>@employee.EmployeeEmail</td>
                 <td>@employee.EmployeeAddress</td>
-                @*<td>
-                    <a class="nav-link" href="updateEmplyee/@employee.EmployeeId"> Update  </a>
-                </td>*@
                 <td>
-                    <a class="nav-link" href="deleteEmplyee/@employee.EmployeeId"> Delete  </a>
+                    <a class="nav-link" href="editEmplyee/@employee.EmployeeId">
+                        <span class="oi oi-pencil"></span> Edit  
+                    </a>
+                </td>
+                <td>
+                    <a class="nav-link" href="deleteEmplyee/@employee.EmployeeId"> 
+                        <span class="oi oi-trash"></span> Delete      
+                    </a>
                 </td>
             </tr>
             }
