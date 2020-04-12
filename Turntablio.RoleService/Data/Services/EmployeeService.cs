@@ -7,7 +7,7 @@ using Turntablio.RoleService.Data.Model;
 
 namespace Turntablio.RoleService.Data.Services
 {
-    public class EmployeeService : IEmployeeService
+    public class EmployeeService 
     {
         private readonly EmployeeContext _dbContext;
 

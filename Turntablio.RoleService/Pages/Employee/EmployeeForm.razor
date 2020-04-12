@@ -1,6 +1,61 @@
 ﻿@page "/employeeForm"
-<h3>EmployeeForm</h3>
+@using Turntablio.RoleService.Data
+@using Turntablio.RoleService.Pages.ViewModel
+@using Turntablio.RoleService.Data.Model
+@using Turntablio.RoleService.Pages.Employee
+
+@inject Turntablio.RoleService.Data.Services.EmployeeService  employeeService
+
+<h1>Create</h1>
+<h3>Employee</h3>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <EditForm Model="@objEmp" OnValidSubmit="@InsertEmployee">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+            <form>
+                <div class="form-group">
+                    <label for="employeefname" class="control-label">First Name</label>
+                    <InputText id="employeefname" class="form-control" @bind-Value="objEmp.EmployeeFirstName" />
+                </div>
+                <div class="form-group">
+                    <label for="employeelname" class="control-label">Last Name</label>
+                    <InputText id="employeefname" class="form-control" @bind-Value="objEmp.EmployeeLastName" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="employeeemail" class="control-label">Email</label>
+                     <InputText id="employeeemail" class="form-control" @bind-Value="objEmp.EmployeeEmail"/>
+                </div>
+                <div class="form-group">
+                    <label asp-for="employeeaddress" class="control-label">Address</label>
+                    <InputText id="employeeaddress" class="form-control" @bind-Value="objEmp.EmployeeAddress" />
+                </div>
+
+            </form>
+             <button type="submit" class="btn btn-primary">ADD</button>
+        </EditForm>
+    </div>
+</div>
+
 
 @code {
-    [Parameter] public EmployeeViewModel viewModel { get; set; }
+    @* [Parameter] public EmployeeViewModel viewModel { get; set; }*@
+    Employee objEmp = new Employee() { EmployeeId = 4 };
+
+
+
+
+
+
+    protected void InsertEmployee()
+    {
+
+
+        employeeService.AddEmployee(objEmp);
+
+
+        //UriHelper.NavigateTo("/employeelist");
+    }
+
 }
