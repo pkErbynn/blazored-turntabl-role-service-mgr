@@ -10,8 +10,17 @@
 <div class="row">
     <div class="col-md-8">
         <div class="form-group">
-            <label>Employee Name</label>
+            <label>Employee Name : </label>
             <label>@employee.EmployeeFirstName</label>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="form-group">
+            <input type="button" class="btn btn-danger" @onclick="@DeleteEmployee" value="Delete" />
+            <input type="button" class="btn btn-primary" @onclick="@Cancel" value="Delete" />
         </div>
     </div>
 </div>
@@ -25,12 +34,17 @@
 
     protected override async Task OnInitializedAsync()
     {
-        employee = await Task.Run(() => employeeService.GetEmployee(Convert.ToInt32(empId)));
+        employee = await Task.Run(() => employeeService.GetEmployeeById(Convert.ToInt32(empId)));
     }
 
     protected void DeleteEmployee()
     {
         employeeService.DeleteEmployee(employee);
+        navigationManager.NavigateTo("employees");
+    }
+
+    void Cancel()
+    {
         navigationManager.NavigateTo("employees");
     }
 }
