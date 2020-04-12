@@ -24,19 +24,23 @@ else
                 <th>Last Name</th>
                 <th>Email</th>
                 <th>Address</th>
-                <th>Role</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var employee in employees)
             {
-                Console.WriteLine(employee);
-                <tr>
-                    <td>@employee.EmployeeFirstName</td>
-                    <td>@employee.EmployeeLastName</td>
-                    <td>@employee.EmployeeEmail</td>
-                    <td>@employee.EmployeeAddress</td>
-                </tr>
+            <tr>
+                <td>@employee.EmployeeFirstName</td>
+                <td>@employee.EmployeeLastName</td>
+                <td>@employee.EmployeeEmail</td>
+                <td>@employee.EmployeeAddress</td>
+                @*<td>
+                    <a class="nav-link" href="updateEmplyee/@employee.EmployeeId"> Update  </a>
+                </td>*@
+                <td>
+                    <a class="nav-link" href="deleteEmplyee/@employee.EmployeeId"> Delete  </a>
+                </td>
+            </tr>
             }
         </tbody>
     </table>
@@ -48,58 +52,11 @@ else
     [Parameter] public EmployeeViewModel viewModel { get; set; }
 
     List<Employee> employees;
+
     protected override async Task OnInitializedAsync()
     {
         employees = await Task.Run(() => employeeService.GetEmployees());
     }
 
 }
-@*
-
-    @if (Emps == null)
-    {
-        <p><em>No employees available yet</em></p>
-    }
-    @if (!isEmployeeDataLoadFinish)
-    {
-        <h4><em>Loading...</em></h4>
-        <br />
-    }
-    else
-    {
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Email</th>
-                    <th>Address</th>
-                    <th>Role</th>
-
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var emp in Emps)
-                {
-                    <tr>
-                        <td>@emp.employeefname.</td>
-                        <td>@emp.employeelname</td>
-                        <td>@emp.employeeemail</td>
-                        <td>@emp.employeeaddress</td>
-                        <td>@emp.employeerole</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    }
-
-
-    @code {
-
-           [Parameter] public EmployeeViewModel employee { get; set; }
-
-
-
-    }
-*@
 
