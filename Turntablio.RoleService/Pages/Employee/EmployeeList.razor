@@ -31,12 +31,12 @@ else
             @foreach (var employee in employees)
             {
                 Console.WriteLine(employee);
-                @*<tr>
+                <tr>
                     <td>@employee.EmployeeFirstName</td>
                     <td>@employee.EmployeeLastName</td>
                     <td>@employee.EmployeeEmail</td>
                     <td>@employee.EmployeeAddress</td>
-                </tr>*@
+                </tr>
             }
         </tbody>
     </table>
@@ -47,7 +47,7 @@ else
 
     [Parameter] public EmployeeViewModel viewModel { get; set; }
 
-    IEnumerable<Employee> employees;
+    List<Employee> employees;
     protected override async Task OnInitializedAsync()
     {
         employees = await Task.Run(() => employeeService.GetEmployees());

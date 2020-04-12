@@ -18,11 +18,9 @@ namespace Turntablio.RoleService.Data.Services
         }
 
         // Get All Employees
-        public IEnumerable<Employee> GetEmployees()
-        {
+        public List<Employee> GetEmployees()
+        {                
             var emplyees = _dbContext.Employees.ToList();
-            Console.WriteLine("works...");
-            Console.WriteLine(emplyees);
             return emplyees;
         }
         
