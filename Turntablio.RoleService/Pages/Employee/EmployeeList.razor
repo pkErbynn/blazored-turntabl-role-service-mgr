@@ -1,67 +1,65 @@
-﻿@page "/employees"
+@page "/employees"
 
 @using Turntablio.RoleService.Data
+@inject Turntablio.RoleService.Data.Services.EmployeeService  employeeService
 
-<a class="btn btn-success" href="/employeeForm">New Employee</a>
-<button type="submit" class="btn btn-primary"><href ="/employeeForm" />ADD</button>
-@*@inject EmployeeService EmployeeService
-    @inject HttpClient Http
+<h2>Employee Information</h2>
+<hr />
 
-         <button type="submit" class="btn btn-primary">ADD</button>
+<NavLink class="nav-link" href="/employeeForm">
+    <span class="oi oi-plus" aria-hidden="true"></span> Add New
+</NavLink>
+<br />
 
-     <a class="btn btn-success" href="/employee/new">New Employee</a>
+@if (employees == null)
+{
+        <h4 class="text-center"><em>Loading...</em></h4>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Address</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var employee in employees)
+            {
+            <tr>
+                <td>@employee.EmployeeFirstName</td>
+                <td>@employee.EmployeeLastName</td>
+                <td>@employee.EmployeeEmail</td>
+                <td>@employee.EmployeeAddress</td>
+                <td>
+                    <a class="nav-link" href="editEmplyee/@employee.EmployeeId">
+                        <span class="oi oi-pencil"></span> Edit  
+                    </a>
+                </td>
+                <td>
+                    <a class="nav-link" href="deleteEmplyee/@employee.EmployeeId"> 
+                        <span class="oi oi-trash"></span> Delete      
+                    </a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+}
 
-    <h1>Employee List</h1>
-    <hr />
 
-    <a class="btn btn-success" href="/employee/new">New Employee</a>
-    <br />
-    <br />
+@code {
 
-    @if (Emps == null)
+    [Parameter] public EmployeeViewModel viewModel { get; set; }
+
+    List<Employee> employees;
+
+    protected override async Task OnInitializedAsync()
     {
-        <p><em>No employees available yet</em></p>
-    }
-    @if (!isEmployeeDataLoadFinish)
-    {
-        <h4><em>Loading...</em></h4>
-        <br />
-    }
-    else
-    {
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Email</th>
-                    <th>Address</th>
-                    <th>Role</th>
-
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var emp in Emps)
-                {
-                    <tr>
-                        <td>@emp.employeefname.</td>
-                        <td>@emp.employeelname</td>
-                        <td>@emp.employeeemail</td>
-                        <td>@emp.employeeaddress</td>
-                        <td>@emp.employeerole</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+        employees = await Task.Run(() => employeeService.GetEmployees());
     }
 
-
-    @code {
-
-           [Parameter] public EmployeeViewModel employee { get; set; }
-
-
-
-    }
-*@
-
+}
