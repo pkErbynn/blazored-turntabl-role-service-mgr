@@ -5,12 +5,13 @@
 @using Turntablio.RoleService.Pages.Employee
 
 @inject Turntablio.RoleService.Data.Services.EmployeeService  employeeService
+@inject NavigationManager navigationManager
 
-<h1>Create</h1>
-<h3>Employee</h3>
+<h2>Add New Employee</h2>
 <hr />
+
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-8">
         <EditForm Model="@objEmp" OnValidSubmit="@InsertEmployee">
             <DataAnnotationsValidator />
             <ValidationSummary />
@@ -25,37 +26,40 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="employeeemail" class="control-label">Email</label>
-                     <InputText id="employeeemail" class="form-control" @bind-Value="objEmp.EmployeeEmail"/>
+                    <InputText id="employeeemail" class="form-control" @bind-Value="objEmp.EmployeeEmail" />
                 </div>
                 <div class="form-group">
                     <label asp-for="employeeaddress" class="control-label">Address</label>
                     <InputText id="employeeaddress" class="form-control" @bind-Value="objEmp.EmployeeAddress" />
                 </div>
+                <br />
+
+                <div class="form-group">
+                    <input type="button" class="btn btn-primary" @onclick="@InsertEmployee" value="Save">
+                    @*<button type="submit" class="btn btn-primary">Add</button>*@
+                    <input type="button" class="btn btn-danger" @onclick="@Cancel" value="Cancel">
+                </div>
 
             </form>
-             <button type="submit" class="btn btn-primary">ADD</button>
         </EditForm>
     </div>
 </div>
 
 
 @code {
-    @* [Parameter] public EmployeeViewModel viewModel { get; set; }*@
-    Employee objEmp = new Employee() ;
 
-
-
-
-
+    Employee objEmp = new Employee();
 
     protected void InsertEmployee()
     {
-
-
         employeeService.AddEmployee(objEmp);
-        
+        navigationManager.NavigateTo("employees");
+    }
 
-        //UriHelper.NavigateTo("/employeelist");
+    protected void Cancel()
+    {
+        navigationManager.NavigateTo("employees");
+
     }
 
 }
