@@ -9,6 +9,7 @@ using Turntablio.RoleService.Data.Model;
 namespace Turntablio.RoleService.Data.Services
 {
     public class EmployeeService
+
     {
         private readonly EmployeeContext _dbContext;
 
@@ -29,11 +30,6 @@ namespace Turntablio.RoleService.Data.Services
         {
             var employee = _dbContext.Employees.SingleOrDefault(e => e.EmployeeId == id);
 
-            //if(employee == null)
-            //{
-            //    throw new HttpResponseException(HttpStatusCode.notFound);
-            //}
-
             return employee;
         }
 
@@ -49,11 +45,6 @@ namespace Turntablio.RoleService.Data.Services
         // Delete Employee By Id
         public string DeleteEmployee(Employee employee)
         {
-            //only Id
-            //var employeeDb = _dbContext.Employees.SingleOrDefault(e => e.EmployeeId == id);
-            //_dbContext.Remove(employee);
-            //_dbContext.SaveChanges();
-
             _dbContext.Remove(employee);
             _dbContext.SaveChanges();
 
@@ -63,25 +54,10 @@ namespace Turntablio.RoleService.Data.Services
         // Update Employee
         public string UpdateEmployee(Employee employee)
         {
-            //+ id:
-            //var employeeInDb = _dbContext.Employees.SingleOrDefault(e => e.EmployeeId == id);
-            //if(employeeInDb == null)
-            //{
-            //    throw new HttpResponseException()
-            //}
-
-            //employeeInDb.EmployeeFirstName = employee.EmployeeFirstName;
-            //employeeInDb.EmployeeLastName = employee.EmployeeLastName;
-            //employeeInDb.EmployeeEmail = employee.EmployeeEmail;
-            //employeeInDb.EmployeeAddress = employee.EmployeeAddress;
-            //_dbContext.SaveChanges();
-
             _dbContext.Employees.Update(employee);
             _dbContext.SaveChanges();
+          
             return "Update Successfully";
-         }
-
-
-       
+         }  
     }
 }

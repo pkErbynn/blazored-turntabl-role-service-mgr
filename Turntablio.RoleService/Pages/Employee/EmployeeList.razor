@@ -1,4 +1,4 @@
-﻿@page "/employees"
+@page "/employees"
 
 @using Turntablio.RoleService.Data
 @inject Turntablio.RoleService.Data.Services.EmployeeService  employeeService
@@ -6,7 +6,7 @@
 <h2>Employee Information</h2>
 <hr />
 
-<NavLink class="nav-link" href="AddEmployee">
+<NavLink class="nav-link" href="/employeeForm">
     <span class="oi oi-plus" aria-hidden="true"></span> Add New
 </NavLink>
 <br />
@@ -63,4 +63,3 @@ else
     }
 
 }
-
