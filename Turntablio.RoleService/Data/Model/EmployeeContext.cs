@@ -10,6 +10,8 @@ namespace Turntablio.RoleService.Data.Model
     {
         public EmployeeContext(DbContextOptions<EmployeeContext> options) : base(options) { }
 
+        public DbSet<Employee> Employees { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<EmployeeRole>()
@@ -86,7 +88,6 @@ namespace Turntablio.RoleService.Data.Model
 
         }
 
-        public DbSet<Employee> Employees { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<EmployeeRole> EmployeeRoles { get; set; }
 
