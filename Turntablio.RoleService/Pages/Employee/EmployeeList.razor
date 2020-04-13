@@ -34,15 +34,22 @@ else
                 <td>@employee.EmployeeLastName</td>
                 <td>@employee.EmployeeEmail</td>
                 <td>@employee.EmployeeAddress</td>
+
+                @foreach (var r in employee.RolesViewModel)
+                {
+                    <td>@r.RoleName</td>
+                }
+
+
                 <td>
-                    <a class="nav-link" href="editEmplyee/@employee.EmployeeId">
-                        <span class="oi oi-pencil"></span> Edit  
-                    </a>
+                    @*<a class="nav-link" href="editEmplyee/@employee.EmployeeId">
+                <span class="oi oi-pencil"></span> Edit
+            </a>*@
                 </td>
                 <td>
-                    <a class="nav-link" href="deleteEmplyee/@employee.EmployeeId"> 
-                        <span class="oi oi-trash"></span> Delete      
-                    </a>
+                    @*<a class="nav-link" href="deleteEmplyee/@employee.EmployeeId">
+                <span class="oi oi-trash"></span> Delete
+            </a>*@
                 </td>
             </tr>
             }
@@ -53,9 +60,7 @@ else
 
 @code {
 
-    [Parameter] public EmployeeViewModel viewModel { get; set; }
-
-    List<Employee> employees;
+    List <EmployeeRoleViewModel> employees;
 
     protected override async Task OnInitializedAsync()
     {
