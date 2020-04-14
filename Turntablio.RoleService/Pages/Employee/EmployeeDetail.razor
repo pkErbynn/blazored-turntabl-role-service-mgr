@@ -26,14 +26,26 @@
             <label>@employeeDetail.EmployeeAddress</label>
         </div>
         <div class="form-group">
-            <label>Role : </label>
-            @foreach (var r in employeeDetail.RolesViewModel)
+            <label>Role(s) : </label>
+            @if (employeeDetail.RolesViewModel == null)
             {
-
-                @*<label>@r.RoleName , </label>*@
-                <span class="badge badge-pill badge-secondary">@r.RoleName </span>
-
+       
+            <span class="badge badge-pill badge-secondary"> Developer </span>
+     
             }
+            else
+            {
+                @foreach (var r in employeeDetail.RolesViewModel)
+
+                {
+
+                    @*<label>@r.RoleName , </label>*@
+                    <span class="badge badge-pill badge-secondary">@r.RoleName </span>
+
+                }
+            }
+
+
         </div>
        
     </div>

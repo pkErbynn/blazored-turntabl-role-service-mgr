@@ -35,25 +35,15 @@ else
                 <td>@employee.EmployeeLastName</td>
                 <td>@employee.EmployeeEmail</td>
                 <td>@employee.EmployeeAddress</td>
-
-                @*@foreach (var r in employee.RolesViewModel)
-        {
-            <td>@r.RoleName</td>
-        }*@
-
                 <td>
-
                     <a class="nav-link" href="employeeDetail/@employee.EmployeeId">
                         <span class="oi oi-book"></span> View
                     </a>
-
                 </td>
                 <td>
-
                     <a class="nav-link" href="editEmployee/@employee.EmployeeId">
                         <span class="oi oi-pencil"></span> Edit
                     </a>
-
                 </td>
                 <td>
                     <a class="nav-link" href="deleteEmployee/@employee.EmployeeId">
