@@ -8,7 +8,7 @@
 <hr />
 
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-8 lead">
         <div class="form-group">
             <label>First Name : </label>
             <label>@employeeDetail.EmployeeFirstName</label>
@@ -49,6 +49,7 @@
     <div class="col-md-4">
         <div class="form-group">
             <input type="button" class="btn btn-primary" @onclick="@Back" value="Back" />
+            <input type="button" class="btn btn-primary" @onclick="@Update" value="Update" />
         </div>
     </div>
 </div>
@@ -70,5 +71,10 @@
     void Back()
     {
         navigationManager.NavigateTo("employees");
+    }
+
+    void Update()
+    {
+        navigationManager.NavigateTo("editEmployee/" + empId);
     }
 }
