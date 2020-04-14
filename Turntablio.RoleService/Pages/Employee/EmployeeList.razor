@@ -24,6 +24,7 @@ else
                 <th>Last Name</th>
                 <th>Email</th>
                 <th>Address</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -39,17 +40,16 @@ else
                 {
                     <td>@r.RoleName</td>
                 }
-
-
+                   
                 <td>
-                    @*<a class="nav-link" href="editEmplyee/@employee.EmployeeId">
-                <span class="oi oi-pencil"></span> Edit
-            </a>*@
+                    <a class="nav-link" href="editEmplyee/@employee.EmployeeId">
+                        <span class="oi oi-pencil"></span> Edit
+                    </a>
                 </td>
                 <td>
-                    @*<a class="nav-link" href="deleteEmplyee/@employee.EmployeeId">
-                <span class="oi oi-trash"></span> Delete
-            </a>*@
+                    <a class="nav-link" href="deleteEmplyee/@employee.EmployeeId">
+                        <span class="oi oi-trash"></span> Delete
+                    </a>
                 </td>
             </tr>
             }
