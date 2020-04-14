@@ -1,0 +1,66 @@
+﻿@page "/employeeDetail/{empId}"
+
+@using Turntablio.RoleService.Data
+@inject Turntablio.RoleService.Data.Services.EmployeeService  employeeService
+@inject NavigationManager navigationManager
+
+<h3> Employee Detail</h3>
+<hr />
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="form-group">
+            <label>First Name : </label>
+            <label>@employee.EmployeeFirstName</label>
+        </div>
+        <div class="form-group">
+            <label>Last Name : </label>
+            <label>@employee.EmployeeLastName</label>
+        </div>
+        <div class="form-group">
+            <label>Last Name : </label>
+            <label>@employee.EmployeeEmail</label>
+        </div>
+        <div class="form-group">
+            <label>Last Name : </label>
+            <label>@employee.EmployeeAddress</label>
+        </div>
+        <div class="form-group">
+            <label>Role : </label>
+            @foreach (var r in @employee.ro)
+            {
+                <label>@r.na</label>
+
+            }
+        </div>
+       
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="form-group">
+            <input type="button" class="btn btn-primary" @onclick="@Back" value="Back" />
+        </div>
+    </div>
+</div>
+
+
+
+@code {
+
+    [Parameter]
+    public string empId { get; set; }
+
+    Employee employee = new Employee();
+
+    protected override async Task OnInitializedAsync()
+    {
+        employee = await Task.Run(() => employeeService.GetEmployeeById(Convert.ToInt32(empId)));
+    }
+
+    void Back()
+    {
+        navigationManager.NavigateTo("employees");
+    }
+}

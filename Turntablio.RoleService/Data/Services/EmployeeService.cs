@@ -59,6 +59,7 @@ namespace Turntablio.RoleService.Data.Services
             return roleViewModel;
         }
 
+
         public EmployeeRoleViewModel  employeeRoleMapper(Employee employee, List<RoleViewModel> roles)
         {
             EmployeeRoleViewModel empViewModel = new EmployeeRoleViewModel()
@@ -71,6 +72,28 @@ namespace Turntablio.RoleService.Data.Services
                 RolesViewModel = roles
             };
             return empViewModel;
+        }
+
+
+        // Fetch employee detail
+        public EmployeeRoleViewModel GetEmployeeDetailById(int id)
+        {
+            var soloEmp = this.GetEmployeeById(id);
+            List<RoleViewModel> soloEmpRoles = new List<RoleViewModel>();
+
+            var roles = (from e in _dbContext.Employees
+                         join er in _dbContext.EmployeeRoles on e.EmployeeId equals er.EmployeeId
+                         join r in _dbContext.Roles on er.RoleId equals r.RoleId
+                         where e.EmployeeId == soloEmp.EmployeeId
+                         select r).ToList();
+
+            foreach (var r in roles)
+            {
+                soloEmpRoles.Add(roleMapper(r.RoleId, r.RoleName));
+            }
+
+            EmployeeRoleViewModel  empDetail= this.employeeRoleMapper(soloEmp, soloEmpRoles);
+            return empDetail;
         }
 
 
