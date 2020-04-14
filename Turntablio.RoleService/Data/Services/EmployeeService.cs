@@ -13,7 +13,6 @@ namespace Turntablio.RoleService.Data.Services
 
     {
         private readonly EmployeeContext _dbContext;
-        
 
         public EmployeeService(EmployeeContext dbContext)
         {
@@ -23,7 +22,6 @@ namespace Turntablio.RoleService.Data.Services
         // Get All Employees
         public List<EmployeeRoleViewModel> GetEmployees()
         {
-
             var employees = _dbContext.Employees.ToList();
 
             List<EmployeeRoleViewModel> empList = new List<EmployeeRoleViewModel>();
@@ -31,11 +29,11 @@ namespace Turntablio.RoleService.Data.Services
 
             foreach (Employee emp in employees)
             {
-                var roles =  (from e in _dbContext.Employees
-                           join er in _dbContext.EmployeeRoles on e.EmployeeId equals er.EmployeeId 
-                           join r in _dbContext.Roles on er.RoleId equals r.RoleId 
-                           where e.EmployeeId == emp.EmployeeId
-                           select r).ToList();
+                var roles = (from e in _dbContext.Employees
+                             join er in _dbContext.EmployeeRoles on e.EmployeeId equals er.EmployeeId
+                             join r in _dbContext.Roles on er.RoleId equals r.RoleId
+                             where e.EmployeeId == emp.EmployeeId
+                             select r).ToList();
 
                 foreach(var r in roles)
                 {
@@ -43,7 +41,6 @@ namespace Turntablio.RoleService.Data.Services
                 }
 
                 empList.Add(employeeRoleMapper(emp, roleList));
-              
             };
 
             Console.WriteLine("result | " + empList);
@@ -66,15 +63,15 @@ namespace Turntablio.RoleService.Data.Services
         {
             EmployeeRoleViewModel empViewModel = new EmployeeRoleViewModel()
             {
-               EmployeeFirstName = employee.EmployeeFirstName,
-               EmployeeLastName = employee.EmployeeLastName,
-               EmployeeAddress = employee.EmployeeAddress,
-               EmployeeEmail = employee.EmployeeEmail,
-               RolesViewModel = roles
+                EmployeeId = employee.EmployeeId,
+                EmployeeFirstName = employee.EmployeeFirstName,
+                EmployeeLastName = employee.EmployeeLastName,
+                EmployeeAddress = employee.EmployeeAddress,
+                EmployeeEmail = employee.EmployeeEmail,
+                RolesViewModel = roles
             };
             return empViewModel;
         }
-
 
 
         // Get Employee By Id

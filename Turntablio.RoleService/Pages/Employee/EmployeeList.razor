@@ -24,7 +24,7 @@ else
                 <th>Last Name</th>
                 <th>Email</th>
                 <th>Address</th>
-                <th>Actions</th>
+                <th colspan="3" class="text-center">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -36,21 +36,31 @@ else
                 <td>@employee.EmployeeEmail</td>
                 <td>@employee.EmployeeAddress</td>
 
-                @foreach (var r in employee.RolesViewModel)
-                {
-                    <td>@r.RoleName</td>
-                }
-                   
+                @*@foreach (var r in employee.RolesViewModel)
+        {
+            <td>@r.RoleName</td>
+        }*@
+
                 <td>
-                    <a class="nav-link" href="editEmplyee/@employee.EmployeeId">
+
+                    <a class="nav-link" href="detailEmployee/@employee.EmployeeId">
                         <span class="oi oi-pencil"></span> Edit
                     </a>
+
                 </td>
                 <td>
-                    <a class="nav-link" href="deleteEmplyee/@employee.EmployeeId">
+
+                    <a class="nav-link" href="editEmployee/@employee.EmployeeId">
+                        <span class="oi oi-pencil"></span> Edit
+                    </a>
+
+                </td>
+                <td>
+                    <a class="nav-link" href="deleteEmployee/@employee.EmployeeId">
                         <span class="oi oi-trash"></span> Delete
                     </a>
                 </td>
+
             </tr>
             }
         </tbody>
@@ -64,7 +74,15 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        employees = await Task.Run(() => employeeService.GetEmployees());
+        try
+        {
+            employees = await Task.Run(() => employeeService.GetEmployees());
+
+        }
+        catch(HttpRequestException ex)
+        {
+            Console.WriteLine("No request, " + ex);
+        }
     }
 
 }

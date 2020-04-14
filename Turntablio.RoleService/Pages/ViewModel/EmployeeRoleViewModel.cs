@@ -8,6 +8,7 @@ namespace Turntablio.RoleService.Pages.ViewModel
 {
     public class EmployeeRoleViewModel
     {
+        public int EmployeeId { get; set; }
         public string EmployeeFirstName { get; set; }
         public string EmployeeLastName { get; set; }
         public string EmployeeEmail { get; set; }
