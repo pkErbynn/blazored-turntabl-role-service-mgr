@@ -22,8 +22,6 @@ else
             <tr>
                 <th>First Name</th>
                 <th>Last Name</th>
-                <th>Email</th>
-                <th>Address</th>
                 <th colspan="3" class="text-center">Actions</th>
             </tr>
         </thead>
@@ -33,8 +31,12 @@ else
             <tr>
                 <td>@employee.EmployeeFirstName</td>
                 <td>@employee.EmployeeLastName</td>
-                <td>@employee.EmployeeEmail</td>
+                @*<td>@employee.EmployeeEmail</td>
                 <td>@employee.EmployeeAddress</td>
+                @foreach(var r in employee.RolesViewModel)
+                {
+                    <td>@r.RoleName</td>
+                }*@
                 <td>
                     <a class="nav-link" href="employeeDetail/@employee.EmployeeId">
                         <span class="oi oi-book"></span> View

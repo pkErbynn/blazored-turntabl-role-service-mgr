@@ -27,23 +27,22 @@
         </div>
         <div class="form-group">
             <label>Role(s) : </label>
-            @if (employeeDetail.RolesViewModel == null)
+            @if (@employeeDetail.RolesViewModel == null)
             {
-       
-            <span class="badge badge-pill badge-secondary"> Developer </span>
-     
+                <span class="badge badge-pill badge-danger"> Not Assigned </span>
             }
             else
             {
                 @foreach (var r in employeeDetail.RolesViewModel)
-
                 {
-
-                    @*<label>@r.RoleName , </label>*@
-                    <span class="badge badge-pill badge-secondary">@r.RoleName </span>
-
+                    <span class="badge badge-pill badge-secondary">@r.RoleName</span>
                 }
+
             }
+            
+
+          
+
 
 
         </div>

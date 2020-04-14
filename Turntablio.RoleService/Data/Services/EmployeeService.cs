@@ -42,9 +42,7 @@ namespace Turntablio.RoleService.Data.Services
 
                 empList.Add(employeeRoleMapper(emp, roleList));
             };
-
-            Console.WriteLine("result | " + empList);
-        
+       
             return empList;
         }
 
