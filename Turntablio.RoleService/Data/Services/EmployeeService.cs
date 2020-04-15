@@ -99,7 +99,6 @@ namespace Turntablio.RoleService.Data.Services
         public Employee GetEmployeeById(int id)
         {
             var employee = _dbContext.Employees.SingleOrDefault(e => e.EmployeeId == id);
-
             return employee;
         }
 

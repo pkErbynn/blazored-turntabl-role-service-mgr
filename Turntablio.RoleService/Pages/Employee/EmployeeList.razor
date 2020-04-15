@@ -28,6 +28,12 @@ else
         </thead>
         
         <tbody>
+            @if (employees.Count == 0)
+            {   <br />
+                <tr>
+                    <td class="lead text-center font-italic alert-danger" colspan="3">No record found</td>
+                </tr>
+            }
             @foreach (var employee in employees)
             {
                 <tr>
