@@ -31,7 +31,7 @@ namespace Turntablio.RoleService.Data.Model
         [Display(Name = "Address")]
         [StringLength(255, ErrorMessage = "Address can't be more than 255 characters.")]
         public string EmployeeAddress { get; set; }
-
+        
         public ICollection<EmployeeRole> EmployeeRoles { get; set; }
 
     }

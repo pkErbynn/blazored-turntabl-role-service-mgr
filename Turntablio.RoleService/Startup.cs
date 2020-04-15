@@ -40,6 +40,7 @@ namespace Turntablio.RoleService
             services.AddSingleton<WeatherForecastService>();
 
             services.AddTransient<EmployeeService>();
+            services.AddTransient<IEmployeeService, EmployeeService>();
             services.AddTransient<System.Net.Http.HttpClient>();
         }
 

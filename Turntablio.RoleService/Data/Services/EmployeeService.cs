@@ -9,7 +9,7 @@ using Turntablio.RoleService.Pages.ViewModel;
 
 namespace Turntablio.RoleService.Data.Services
 {
-    public class EmployeeService
+    public class EmployeeService : IEmployeeService
 
     {
         private readonly EmployeeContext _dbContext;
@@ -19,7 +19,7 @@ namespace Turntablio.RoleService.Data.Services
             _dbContext = dbContext;
         }
 
-        // Get All Employees
+        // Get All Employees and their corresponding role(s)
         public List<EmployeeRoleViewModel> GetEmployees()
         {
             var employees = _dbContext.Employees.ToList();
