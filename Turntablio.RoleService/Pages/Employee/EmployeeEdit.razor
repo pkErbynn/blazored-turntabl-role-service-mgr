@@ -6,44 +6,85 @@
 <h3>Update Employee</h3>
 <hr />
 
-<form>
-    <div class="row">
-        <div class="col-md-8">
-            <div class="form-group">
-                <label for="firstname">First Name </label>
-                <input form="firstname" class="form-control" @bind="@employee.EmployeeFirstName" />
-            </div>
-            <div class="form-group">
-                <label>Last Name </label>
-                <input form="lastname" class="form-control" @bind="@employee.EmployeeLastName">
-            </div>
-            <div class="form-group">
-                <label>Email</label>
-                <input form="email" class="form-control" @bind="@employee.EmployeeEmail">
-            </div>
-            <div class="form-group">
-                <label>Address </label>
-                <input form="address" class="form-control" @bind="@employee.EmployeeAddress">
-            </div>
-        </div>
-    </div>
-    <br>
+<div class="row">
+    <div class="col-md-8">
+        <EditForm Model="@employee" OnValidSubmit="@UpdateEmployee">
+            <DataAnnotationsValidator />
+            <ValidationSummary Model="@employee" />
 
-    <div class="row">
-        <div class="col-md-4">
             <div class="form-group">
-                <input type="button" class="btn btn-primary mr-4" @onclick="@UpdateEmployee" value="Update">
+                <label for="employeefname" class="control-label">First Name</label>
+                <InputText id="employeefname" class="form-control" @bind-Value="employee.EmployeeFirstName" />
+                <ValidationMessage For="@(() => employee.EmployeeFirstName)" />
+            </div>
+            <div class="form-group">
+                <label for="employeelname" class="control-label">Last Name</label>
+                <InputText id="employeefname" class="form-control" @bind-Value="employee.EmployeeLastName" />
+                <ValidationMessage For="@(() => employee.EmployeeLastName)" />
+            </div>
+            <div class="form-group">
+                <label asp-for="employeeemail" class="control-label">Email</label>
+                <InputText id="employeeemail" class="form-control" @bind-Value="employee.EmployeeEmail" />
+                <ValidationMessage For="@(() => employee.EmployeeEmail)" />
+            </div>
+            <div class="form-group">
+                <label asp-for="employeeaddress" class="control-label">Address</label>
+                <InputText id="employeeaddress" class="form-control" @bind-Value="employee.EmployeeAddress" />
+                <ValidationMessage For="@(() => employee.EmployeeAddress)" />
+            </div>
+            <br />
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary mr-4">Update</button>
                 <input type="button" class="btn btn-danger" @onclick="@Cancel" value="Cancel">
             </div>
-        </div>
+            ++
+            <ValidationSummary/>
+        </EditForm>
     </div>
-</form>
+</div>
+
+@*
+    <form>
+        <div class="row">
+            <div class="col-md-8">
+                <DataAnnotationsValidator />
+                <div class="form-group">
+                    <label for="firstname">First Name </label>
+                    <input form="firstname" class="form-control" @bind="@employee.EmployeeFirstName" />
+                    <ValidationMessage For="@(() => employee.EmployeeLastName)" />
+                </div>
+                <div class="form-group">
+                    <label>Last Name </label>
+                    <input form="lastname" class="form-control" @bind="@employee.EmployeeLastName">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input form="email" class="form-control" @bind="@employee.EmployeeEmail">
+                </div>
+                <div class="form-group">
+                    <label>Address </label>
+                    <input form="address" class="form-control" @bind="@employee.EmployeeAddress">
+                </div>
+            </div>
+        </div>
+        <br>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <input type="button" class="btn btn-primary mr-4" @onclick="@UpdateEmployee" value="Update">
+                    <input type="button" class="btn btn-danger" @onclick="@Cancel" value="Cancel">
+                </div>
+            </div>
+        </div>
+    </form>*@
 
 
 @code {
 
     [Parameter]
-    public string  empId {get; set;}
+    public string empId { get; set; }
 
     Employee employee = new Employee();
 
