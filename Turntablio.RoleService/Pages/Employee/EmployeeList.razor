@@ -2,6 +2,7 @@
 
 @using Turntablio.RoleService.Data
 @inject Turntablio.RoleService.Data.Services.EmployeeService  employeeService
+@inject NavigationManager navigationManager
 
 <h2>Employee Information</h2>
 <hr />
@@ -27,7 +28,6 @@ else
         </thead>
 
         <tbody>
-
             @if (employees.Count == 0)
             {
                 <tr>
@@ -54,7 +54,6 @@ else
                             <span class="oi oi-trash"></span> Delete
                         </a>
                     </td>
-
                 </tr>
             }
         </tbody>
@@ -71,11 +70,11 @@ else
         try
         {
             employees = await Task.Run(() => employeeService.GetEmployees());
-
         }
         catch (HttpRequestException ex)
         {
-            Console.WriteLine("No request, " + ex);
+            Console.WriteLine("No request, " + ex.GetBaseException());
+            navigationManager.NavigateTo("/page/invalid");
         }
     }
 
