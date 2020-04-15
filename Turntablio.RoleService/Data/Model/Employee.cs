@@ -11,22 +11,22 @@ namespace Turntablio.RoleService.Data.Model
     {
         public int EmployeeId { get; set; }
 
-        [Required(ErrorMessage = "Please enter employee's name")]
+        [Required(ErrorMessage = "Please enter employee's first name")]
         [Display(Name = "First Name")]
         [StringLength(50)]
         public string EmployeeFirstName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Please enter employee's last name")]
         [Display(Name = "Last Name")]
         [StringLength(50)]
         public string EmployeeLastName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Please enter employee's email")]
         [Display(Name = "Email")]
         [StringLength(60)]
         public string EmployeeEmail { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Please enter employee's address")]
         [Display(Name = "Address")]
         [StringLength(255)]
         public string EmployeeAddress { get; set; }

@@ -24,25 +24,24 @@
                 <div class="form-group">
                     <label for="employeelname" class="control-label">Last Name</label>
                     <InputText id="employeefname" class="form-control" @bind-Value="objEmp.EmployeeLastName" />
+                    <ValidationMessage For="@(() => objEmp.EmployeeLastName)" />
                 </div>
                 <div class="form-group">
                     <label asp-for="employeeemail" class="control-label">Email</label>
                     <InputText id="employeeemail" class="form-control" @bind-Value="objEmp.EmployeeEmail" />
+                    <ValidationMessage For="@(() => objEmp.EmployeeEmail)" />
                 </div>
                 <div class="form-group">
                     <label asp-for="employeeaddress" class="control-label">Address</label>
                     <InputText id="employeeaddress" class="form-control" @bind-Value="objEmp.EmployeeAddress" />
+                    <ValidationMessage For="@(() => objEmp.EmployeeAddress)" />
                 </div>
                 <br />
 
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Save</button>
-
-                    @*<input type="button" class="btn btn-primary mr-4" @onclick="@InsertEmployee" value="Save">*@
+                    <button type="submit" class="btn btn-primary mr-4">Save</button>
                     <input type="button" class="btn btn-danger" @onclick="@Cancel" value="Cancel">
                 </div>
-
-           
 
         </EditForm>
     </div>
