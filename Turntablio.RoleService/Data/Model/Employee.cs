@@ -11,7 +11,7 @@ namespace Turntablio.RoleService.Data.Model
     {
         public int EmployeeId { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Please enter employee's name")]
         [Display(Name = "First Name")]
         [StringLength(50)]
         public string EmployeeFirstName { get; set; }
@@ -35,3 +35,4 @@ namespace Turntablio.RoleService.Data.Model
 
     }
 }
+ 

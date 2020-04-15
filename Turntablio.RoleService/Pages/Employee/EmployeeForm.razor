@@ -14,11 +14,12 @@
     <div class="col-md-8">
         <EditForm Model="@objEmp" OnValidSubmit="@InsertEmployee">
             <DataAnnotationsValidator />
-            <ValidationSummary />
-            <form>
+            <ValidationSummary Model="@objEmp" />
+
                 <div class="form-group">
                     <label for="employeefname" class="control-label">First Name</label>
                     <InputText id="employeefname" class="form-control" @bind-Value="objEmp.EmployeeFirstName" />
+                    <ValidationMessage For="@(() => objEmp.EmployeeFirstName)" />
                 </div>
                 <div class="form-group">
                     <label for="employeelname" class="control-label">Last Name</label>
@@ -35,12 +36,14 @@
                 <br />
 
                 <div class="form-group">
-                    <input type="button" class="btn btn-primary mr-4" @onclick="@InsertEmployee" value="Save">
-                    @*<button type="submit" class="btn btn-primary">Add</button>*@
+                    <button type="submit" class="btn btn-primary">Save</button>
+
+                    @*<input type="button" class="btn btn-primary mr-4" @onclick="@InsertEmployee" value="Save">*@
                     <input type="button" class="btn btn-danger" @onclick="@Cancel" value="Cancel">
                 </div>
 
-            </form>
+           
+
         </EditForm>
     </div>
 </div>
