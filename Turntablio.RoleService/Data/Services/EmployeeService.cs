@@ -21,11 +21,11 @@ namespace Turntablio.RoleService.Data.Services
 
         // Get All Employees and their corresponding role(s)
         public List<EmployeeRoleViewModel> GetEmployees()
-        {
-            var employees = _dbContext.Employees.ToList();
-
+        {         
             List<EmployeeRoleViewModel> empList = new List<EmployeeRoleViewModel>();
             List<RoleViewModel> roleList = new List<RoleViewModel>();
+
+            var employees = _dbContext.Employees.ToList();
 
             foreach (Employee emp in employees)
             {

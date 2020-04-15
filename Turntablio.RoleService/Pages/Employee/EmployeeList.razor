@@ -67,15 +67,6 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        try
-        {
             employees = await Task.Run(() => employeeService.GetEmployees());
-        }
-        catch (HttpRequestException ex)
-        {
-            Console.WriteLine("No request, " + ex.GetBaseException());
-            navigationManager.NavigateTo("/page/invalid");
-        }
     }
-
 }
