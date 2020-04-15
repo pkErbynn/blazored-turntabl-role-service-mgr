@@ -13,7 +13,7 @@
 
 @if (employees == null)
 {
-        <h4 class="text-center"><em>Loading...</em></h4>
+    <h4 class="text-center"><em>Loading...</em></h4>
 }
 else
 {
@@ -25,35 +25,37 @@ else
                 <th colspan="3" class="text-center">Actions</th>
             </tr>
         </thead>
+
         <tbody>
+
+            @if (employees.Count == 0)
+            {
+                <tr>
+                    <td class="lead text-center font-italic alert-danger" colspan="3">No record found</td>
+                </tr>
+            }
             @foreach (var employee in employees)
             {
-            <tr>
-                <td>@employee.EmployeeFirstName</td>
-                <td>@employee.EmployeeLastName</td>
-                @*<td>@employee.EmployeeEmail</td>
-                <td>@employee.EmployeeAddress</td>
-                @foreach(var r in employee.RolesViewModel)
-                {
-                    <td>@r.RoleName</td>
-                }*@
-                <td>
-                    <a class="nav-link" href="employeeDetail/@employee.EmployeeId">
-                        <span class="oi oi-list-rich"></span> View
-                    </a>
-                </td>
-                <td>
-                    <a class="nav-link" href="editEmployee/@employee.EmployeeId">
-                        <span class="oi oi-pencil"></span> Edit
-                    </a>
-                </td>
-                <td>
-                    <a class="nav-link" href="deleteEmployee/@employee.EmployeeId">
-                        <span class="oi oi-trash"></span> Delete
-                    </a>
-                </td>
+                <tr>
+                    <td>@employee.EmployeeFirstName</td>
+                    <td>@employee.EmployeeLastName</td>
+                    <td>
+                        <a class="nav-link" href="employeeDetail/@employee.EmployeeId">
+                            <span class="oi oi-list-rich"></span> View
+                        </a>
+                    </td>
+                    <td>
+                        <a class="nav-link" href="editEmployee/@employee.EmployeeId">
+                            <span class="oi oi-pencil"></span> Edit
+                        </a>
+                    </td>
+                    <td>
+                        <a class="nav-link" href="deleteEmployee/@employee.EmployeeId">
+                            <span class="oi oi-trash"></span> Delete
+                        </a>
+                    </td>
 
-            </tr>
+                </tr>
             }
         </tbody>
     </table>
@@ -62,7 +64,7 @@ else
 
 @code {
 
-    List <EmployeeRoleViewModel> employees;
+    List<EmployeeRoleViewModel> employees;
 
     protected override async Task OnInitializedAsync()
     {
@@ -71,7 +73,7 @@ else
             employees = await Task.Run(() => employeeService.GetEmployees());
 
         }
-        catch(HttpRequestException ex)
+        catch (HttpRequestException ex)
         {
             Console.WriteLine("No request, " + ex);
         }
