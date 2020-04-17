@@ -6,7 +6,7 @@ Turntabl Role Service using ASP.NET Core Blazor Server with .NET Framework 3.1
 Get Employee List
 ![EmployeeList](Turntablio.RoleService/Pages/images/empList.PNG)
 
-Edit Employee
+Edit Employee with valid data
 ![EmployeeEdit](Turntablio.RoleService/Pages/images/empUpdate.PNG)
 
 Employee Detail
@@ -15,5 +15,5 @@ Employee Detail
 Remove Employee
 ![EmployeeDelete](Turntablio.RoleService/Pages/images/empDelete.PNG)
 
-Add New Employee
+Add New Employee with validation
 ![EmployeeAdd](Turntablio.RoleService/Pages/images/empAdd.PNG)
