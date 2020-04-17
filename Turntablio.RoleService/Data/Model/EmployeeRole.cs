@@ -12,6 +12,5 @@ namespace Turntablio.RoleService.Data.Model
 
         public int RoleId { get; set; }
         public Role Role { get; set; }
-
     }
 }
