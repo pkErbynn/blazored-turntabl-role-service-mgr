@@ -9,20 +9,20 @@
 <h4>Are you sure you to delete ? </h4>
 <br />
 
-<div class="row">
+<div class="row lead">
     <div class="col-md-8">
         <div class="form-group">
             <label>First Name : </label>
-            <label>@employee.EmployeeFirstName</label>
+            <label><b>@employee.EmployeeFirstName</b></label>
         </div>
         <div class="form-group">
             <label>Last Name : </label>
-            <label>@employee.EmployeeLastName</label>
+            <label><b>@employee.EmployeeLastName</b></label>
         </div>
     </div>
 </div>
 
-<div class="row">
+<div class="row lead">
     <div class="col-md-4">
         <div class="form-group">
             <input type="button" class="btn btn-danger mr-4" @onclick="@DeleteEmployee" value="Delete" />
