@@ -76,6 +76,7 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-            employees = await Task.Run(() => employeeService.GetEmployees());
+        await Task.Delay(3000);
+        employees = await Task.Run(() => employeeService.GetEmployees());
     }
 }
